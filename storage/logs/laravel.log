@@ -648,3 +648,7 @@
 [stacktrace]
 #0 {main}
 "} 
+[2018-03-14 20:53:21] local.ERROR: Maximum execution time of 60 seconds exceeded {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalErrorException(code: 1): Maximum execution time of 60 seconds exceeded at C:\\xampp\\htdocs\\saldo-laravel\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php:17)
+[stacktrace]
+#0 {main}
+"} 
