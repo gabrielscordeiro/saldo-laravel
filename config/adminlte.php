@@ -88,17 +88,27 @@ return [
       |
      */
     'menu' => [
-        'Menu principal',
         [
-            'text' => 'Blog',
-            'url' => 'admin/blog',
-            'can' => 'manage-blog',
-        ],
-        [
-            'text' => 'Home',
+            'text' => 'Dashboard',
             'url' => 'admin',
-            'icon' => 'home',
+            'icon' => 'dashboard',
         ],
+        [
+            'text' => 'Financeiro',
+            'icon' => 'money',
+            'submenu' => [
+                [
+                    'text' => 'Saldo',
+                    'url' => 'admin/balance',
+                    'icon' => 'credit-card-alt'
+                ],
+                [
+                    'text' => 'Histórico',
+                    'url' => 'historic',
+                    'icon' => 'history'
+                ],
+            ]
+        ]
     ],
     /*
       |--------------------------------------------------------------------------
