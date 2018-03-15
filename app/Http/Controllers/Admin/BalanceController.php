@@ -10,9 +10,18 @@ class BalanceController extends Controller
 
     public function index()
     {
-        $balance = auth()->user()->balance; 
+        $balance = auth()->user()->balance;
         $amount = $balance ? $balance->amount : 0;
         return view('admin.balance.index', compact('amount'));
+    }
+
+    public function deposito()
+    {
+        return view('admin.balance.deposito');
+    }
+    
+    public function depositoStore(){
+        
     }
 
 }
