@@ -11,10 +11,19 @@ class Balance extends Model
 
     public function deposito(float $value): Array
     {
+        $totalBefore = $this->amount ? $this->amount : 0;
         $this->amount += number_format($value, 2, '.', '');
         $deposito = $this->save();
 
-        if ($deposito) {
+        $historic = auth()->user()->historics()->create([
+            'type' => 'I',
+            'amount' => $value,
+            'total_before' => $totalBefore,
+            'total_after' => $this->amount,
+            'date' => date('Ymd')
+        ]);
+
+        if ($deposito && $historic) {
             return [
                 'success' => true,
                 'message' => 'Registro inserido com sucesso'
