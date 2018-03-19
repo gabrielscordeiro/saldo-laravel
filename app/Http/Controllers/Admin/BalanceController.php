@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Balance;
+use App\Http\Requests\MoneyValidationFormRequest;
 
 class BalanceController extends Controller
 {
@@ -21,13 +22,23 @@ class BalanceController extends Controller
         return view('admin.balance.deposito');
     }
 
-    public function depositoStore(Request $request)
+    public function depositoStore(MoneyValidationFormRequest $request)
     {
         /* Caso nao tenha nenhum registro na tabela relacionado ao usuário ele
          * irá criar um registro com os valores default
          */
         $balance = auth()->user()->balance()->firstOrCreate([]);
-        $balance->deposito($request->valorDeposito);
+        $response = $balance->deposito($request->valorRecarga);
+
+        if ($response['success']) {
+            return redirect()
+                            ->route('admin.balance')
+                            ->with('success', $response['message']);
+        } else {
+            return redirect()
+                            ->back()
+                            ->with('error', $response['message']);
+        }
     }
 
 }

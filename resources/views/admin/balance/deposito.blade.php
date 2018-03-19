@@ -23,11 +23,13 @@
         <h3>Fazer recarga</h3>
     </div>
     <div class="box-body">
+        @include('admin.includes.alerts')
+        
         <form method="POST" action="{{ route('deposito.store') }}">
             {!! csrf_field() !!}
             
             <div class="form-group">
-                <input type="text" name="valorDeposito" placeholder="Valor Recarga" class="form-control"/>
+                <input type="text" name="valorRecarga" placeholder="Valor Recarga" class="form-control"/>
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-success">Recarregar</button>

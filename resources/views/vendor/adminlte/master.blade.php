@@ -62,6 +62,10 @@
 @endif
 
 @yield('adminlte_js')
-
+<script type="text/javascript">
+    $('.alert-dismissible').fadeTo(2000, 500).slideUp(500, function(){
+        $('.alert-dismissible').alert('close');
+    });
+</script>
 </body>
 </html>
