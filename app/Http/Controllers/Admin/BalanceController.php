@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Balance;
 
 class BalanceController extends Controller
 {
@@ -19,9 +20,14 @@ class BalanceController extends Controller
     {
         return view('admin.balance.deposito');
     }
-    
-    public function depositoStore(){
-        
+
+    public function depositoStore(Request $request)
+    {
+        /* Caso nao tenha nenhum registro na tabela relacionado ao usuário ele
+         * irá criar um registro com os valores default
+         */
+        $balance = auth()->user()->balance()->firstOrCreate([]);
+        $balance->deposito($request->valorDeposito);
     }
 
 }

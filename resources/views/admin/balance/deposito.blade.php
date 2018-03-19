@@ -24,8 +24,10 @@
     </div>
     <div class="box-body">
         <form method="POST" action="{{ route('deposito.store') }}">
+            {!! csrf_field() !!}
+            
             <div class="form-group">
-                <input type="text" placeholder="Valor Recarga" class="form-control"/>
+                <input type="text" name="valorDeposito" placeholder="Valor Recarga" class="form-control"/>
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-success">Recarregar</button>
