@@ -41,4 +41,28 @@ class BalanceController extends Controller
         }
     }
 
+    public function saque()
+    {
+        return view('admin.balance.saque');
+    }
+    
+    public function saqueStore(MoneyValidationFormRequest $request)
+    {
+        /* Caso nao tenha nenhum registro na tabela relacionado ao usuário ele
+         * irá criar um registro com os valores default
+         */
+        $balance = auth()->user()->balance()->firstOrCreate([]);
+        $response = $balance->deposito($request->valorSaque);
+
+        if ($response['success']) {
+            return redirect()
+                            ->route('admin.balance')
+                            ->with('success', $response['message']);
+        } else {
+            return redirect()
+                            ->back()
+                            ->with('error', $response['message']);
+        }
+    }
+
 }
