@@ -29,7 +29,7 @@
             {!! csrf_field() !!}
             
             <div class="form-group">
-                <input type="text" name="valorRecarga" placeholder="Valor Recarga" class="form-control"/>
+                <input type="text" name="valorMoney" placeholder="Valor Recarga" class="form-control"/>
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-success">Recarregar</button>
