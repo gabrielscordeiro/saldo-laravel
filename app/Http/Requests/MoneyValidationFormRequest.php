@@ -2,6 +2,12 @@
 
 namespace App\Http\Requests;
 
+/**
+ *
+ * @author Gabriel Schmidt Cordeiro <gabrielscordeiro2012@gmail.com>
+ * 
+ */
+
 use Illuminate\Foundation\Http\FormRequest;
 
 class MoneyValidationFormRequest extends FormRequest

@@ -2,6 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+/**
+ *
+ * @author Gabriel Schmidt Cordeiro <gabrielscordeiro2012@gmail.com>
+ * 
+ */
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Balance;
@@ -46,7 +52,7 @@ class BalanceController extends Controller
     {
         return view('admin.balance.saque');
     }
-    
+
     public function saqueStore(MoneyValidationFormRequest $request)
     {
         /* Caso nao tenha nenhum registro na tabela relacionado ao usuário ele
@@ -65,37 +71,36 @@ class BalanceController extends Controller
                             ->with('error', $response['message']);
         }
     }
-    
+
     public function transferir()
     {
         return view('admin.balance.transferir');
     }
-    
+
     public function confirmaTransferencia(Request $request, User $user)
     {
-        if(!$sender = $user->getSender($request->sender)){
+        if (!$sender = $user->getSender($request->sender)) {
             return redirect()
-                    ->back()
-                    ->with('error','Usuário informado não encontrado!');
-        }elseif ($sender->id === auth()->user()->id){
-                        return redirect()
-                    ->back()
-                    ->with('error','Você não pode transferir dinheiro para você mesmo!');
-        }else{
+                            ->back()
+                            ->with('error', 'Usuário informado não encontrado!');
+        } elseif ($sender->id === auth()->user()->id) {
+            return redirect()
+                            ->back()
+                            ->with('error', 'Você não pode transferir dinheiro para você mesmo!');
+        } else {
             $balance = auth()->user()->balance;
-            return view('admin.balance.confirma-transferencia', compact('sender','balance'));
+            return view('admin.balance.confirma-transferencia', compact('sender', 'balance'));
         }
-        
     }
-    
+
     public function transferenciaStore(MoneyValidationFormRequest $request, User $user)
     {
-        
-        if(!$sender = $user->find($request->sender_id)){
+
+        if (!$sender = $user->find($request->sender_id)) {
             return redirect()
                             ->route('balance.transferencia')
                             ->with('success', 'Recebedor não encontrado');
-        }else{            
+        } else {
             $balance = auth()->user()->balance()->firstOrCreate([]);
             $response = $balance->realizarTransferencia($request->valorMoney, $sender);
 

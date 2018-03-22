@@ -1,5 +1,11 @@
 <?php
 
+/**
+ *
+ * @author Gabriel Schmidt Cordeiro <gabrielscordeiro2012@gmail.com>
+ * 
+ */
+
 use Illuminate\Database\Seeder;
 use App\User;
 

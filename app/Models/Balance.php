@@ -2,6 +2,12 @@
 
 namespace App\Models;
 
+/**
+ *
+ * @author Gabriel Schmidt Cordeiro <gabrielscordeiro2012@gmail.com>
+ * 
+ */
+
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use App\User;

@@ -2,6 +2,11 @@
 
 namespace App;
 
+/**
+ *
+ * @author Gabriel Schmidt Cordeiro <gabrielscordeiro2012@gmail.com>
+ * 
+ */
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\Balance;
@@ -39,12 +44,13 @@ class User extends Authenticatable
     {
         return $this->hasMany(Historic::class);
     }
-    
-    public function getSender($sender){
+
+    public function getSender($sender)
+    {
         return $this->where('name', 'LIKE', "%$sender%")
-            ->orWhere('email', $sender)
-            ->get()
-            ->first();
+                        ->orWhere('email', $sender)
+                        ->get()
+                        ->first();
     }
 
 }

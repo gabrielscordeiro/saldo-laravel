@@ -2,6 +2,12 @@
 
 namespace App\Http\Controllers;
 
+/**
+ *
+ * @author Gabriel Schmidt Cordeiro <gabrielscordeiro2012@gmail.com>
+ * 
+ */
+
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
