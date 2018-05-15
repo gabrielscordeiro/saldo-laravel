@@ -7,7 +7,6 @@ namespace App\Http\Controllers\Admin;
  * @author Gabriel Schmidt Cordeiro <gabrielscordeiro2012@gmail.com>
  * 
  */
-
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Balance;
@@ -114,6 +113,13 @@ class BalanceController extends Controller
                                 ->with('error', $response['message']);
             }
         }
+    }
+
+    public function historico()
+    {
+        $historicos = auth()->user()->historics()->get();
+        
+        return $this->view('admin.balance.historico', compact('historicos'));
     }
 
 }

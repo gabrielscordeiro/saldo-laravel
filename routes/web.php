@@ -3,6 +3,8 @@
 $this->group(['middleware' => ['auth'], 'namespace' => 'Admin', 'prefix' => 'admin'], function() {
     $this->get('/', 'AdminController@index')->name('admin.home');
     
+    $this->get('balance/historico','BalanceController@historico')->name('admin.historico');
+    
     $this->post('balance/transferencia/store','BalanceController@transferenciaStore')->name('transferencia.store');   
     $this->post('balance/transferencia/confirmaTransferencia','BalanceController@confirmaTransferencia')->name('confirma.transferencia');   
     $this->get('balance/transferencia','BalanceController@transferir')->name('balance.transferencia');   
